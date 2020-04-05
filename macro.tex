@@ -1,0 +1,166 @@
+% 模板设置
+
+\newcommand{\privacy}[1][公开]{#1} % 密级
+\newcommand{\type}[1][【设计或者论文】]{#1} % 类型，选填
+\newcommand{\titleCna}[1][XXX]{#1} % 中文题目，默认最长12字符，查过部分换行到\titleCnb，我感觉大部分同学的题目长度都是超过12个字符，所以这部分我分为a，b两部分
+\newcommand{\titleCnb}[1][XXX]{#1} % 中文题目，默认最长12字符，补充到a
+\newcommand{\titleEn}[1][XXX]{#1} % 英文题目
+
+\newcommand{\keywordsCn}[1][]{#1} % 中文关键字
+\newcommand{\keywordsEn}[1][]{#1} % 英文关键字
+
+\newcommand{\supervisor}[1][XXX\hspace{2em}教授]{#1} % 导师姓名
+\newcommand{\studentID}[1][XXX]{#1} % 学号
+\newcommand{\studentNameCn}[1][XXX]{#1} % 填写中文姓名
+\newcommand{\studentNameEn}[1][XXX]{#1} % 填写英文姓名
+
+\newcommand{\finishedYear}[1][\the\year]{#1} % 论文完成日期: 年
+\newcommand{\finishedMonth}[1][\the\month]{#1} % 论文完成日期: 月
+\newcommand{\finishedDay}[1][\the\day]{#1} % 论文完成日期: 日
+
+
+\newcommand{\department}[1][计算机与信息学院]{#1} % 系名称
+\newcommand{\major}[1][信号与信息处理]{#1} % 专业名称
+\newcommand{\enrolmentYear}[1][【2017级】]{#1} % 入学年份
+\newcommand{\object}[1][XXX]{#1} %研究方向
+
+
+
+% 字号设置
+\newcommand{\chuhao}{\fontsize{42pt}{\baselineskip}\selectfont}     % 字号设置
+\newcommand{\xiaochuhao}{\fontsize{36pt}{\baselineskip}\selectfont} % 字号设置
+\newcommand{\yichu}{\fontsize{32pt}{\baselineskip}\selectfont}      % 字号设置
+\newcommand{\yihao}{\fontsize{28pt}{\baselineskip}\selectfont}      % 字号设置
+\newcommand{\erhao}{\fontsize{21pt}{\baselineskip}\selectfont}      % 字号设置
+\newcommand{\xiaoerhao}{\fontsize{18pt}{\baselineskip}\selectfont}  % 字号设置
+\newcommand{\sanhao}{\fontsize{15.75pt}{\baselineskip}\selectfont}  % 字号设置
+\newcommand{\sihao}{\fontsize{14pt}{\baselineskip}\selectfont}      % 字号设置
+\newcommand{\xiaosihao}{\fontsize{12pt}{\baselineskip}\selectfont}  % 字号设置
+\newcommand{\wuhao}{\fontsize{10.5pt}{\baselineskip}\selectfont}    % 字号设置
+\newcommand{\xiaowuhao}{\fontsize{9pt}{\baselineskip}\selectfont}   % 字号设置
+\newcommand{\liuhao}{\fontsize{7.875pt}{\baselineskip}\selectfont}  % 字号设置
+\newcommand{\qihao}{\fontsize{5.25pt}{\baselineskip}\selectfont}    % 字号设置
+\newcommand{\fighao}{\fontsize{11pt}{\baselineskip}\selectfont}    % 字号设置
+
+% 下划线
+\newcommand{\underlineFixlen}[2][3.5cm]{\underline{\makebox[#1][c]{#2}}}
+
+
+% 中文摘要
+\renewenvironment{abstract}{
+%\thispagestyle{empty} % 去掉页码
+{
+\begin{center}
+\Large \songti \bfseries 摘\hspace{1em}要\vspace{1.1cm}
+\end{center}
+}
+\setlength{\parindent}{2em}
+\setlength{\parskip}{0em}
+\setlength{\lineskip}{0em} 
+\setlength{\baselineskip}{20pt} % （宋体，小四；固定行距22磅，段前、段后均为0行间距。段落首行缩进2字符。）
+\songti
+}{
+\setlength{\parindent}{0em}
+\setlength{\parskip}{1em}
+{\par \songti \bfseries{关键词：}}
+\keywordsCn
+\clearpage
+}
+
+% 英文摘要
+\newenvironment{abstractEn}{
+%\thispagestyle{empty} % 去掉页码
+{
+\begin{center}
+\Large \bfseries ABSTRACT\vspace{1.5cm}
+\end{center}
+}
+\setlength{\parindent}{2em}
+\setlength{\parskip}{0em}
+\setlength{\lineskip}{0em} 
+\setlength{\baselineskip}{20pt} % 22磅行距，首行缩进1字符，段前、段后均为0行间距
+}{
+\setlength{\parindent}{0em}
+\setlength{\parskip}{1em}
+{\par \bfseries{KEYWORDS: }}
+\keywordsEn
+\clearpage
+}
+
+% 目录名
+\renewcommand\contentsname{
+\begin{center}
+\songti \Large \bfseries 目\hspace{1em}录 % （宋体，小二号，加粗；居中，单倍行距，段前0.5行、段后1.5行间距）
+\end{center}
+\vspace{1em}
+}
+% 插图清单
+\renewcommand\listfigurename{
+\begin{center}
+\songti \Large \bfseries 插图清单 % （宋体，小二号，加粗；居中，单倍行距，段前0.5行、段后1.5行间距）
+\end{center}
+\vspace{1em}
+}
+
+% 表格清单
+\renewcommand\listtablename{
+\begin{center}
+\songti \Large \bfseries 表格清单 % （宋体，小二号，加粗；居中，单倍行距，段前0.5行、段后1.5行间距）
+\end{center}
+\vspace{1em}
+}
+
+\renewcommand\refname{\heiti \sanhao \bfseries 参考文献}
+
+
+% 目录引线设置
+\renewcommand{\cftdotsep}{1.5} % 线的密度
+\renewcommand{\cftsecdotsep}{1.5} % section引线
+\renewcommand{\cftsecleader}{\cftdotfill{\cftsecdotsep}}
+\renewcommand{\cftsecpagefont}{}
+
+% 插图清单
+\renewcommand{\cftfigpresnum}{\figurename\enspace}
+
+% 表格清单
+\renewcommand{\cfttabpresnum}{\tablename\enspace}
+
+% 致谢
+\newenvironment{acknowledge}{
+\clearpage
+\vspace*{-2em}
+\phantomsection % 使得hyperref目录能够跳转到正确的位置
+\addcontentsline{toc}{section}{致谢} % 添加到目录中
+\begin{center}
+ \songti \Large \bfseries 致谢\end{center}\vspace{1.1cm}
+\setlength{\parindent}{2em}
+\setlength{\parskip}{0.5em}
+\setlength{\baselineskip}{22pt} % 22磅行距，首行缩进1字符，段前、段后均为0行间距
+\songti
+\par
+}{
+	\par
+	\hfill 作者：\studentNameCn
+
+	\hfill \finishedYear\enspace 年\finishedMonth\enspace 月\finishedDay\enspace 日
+}
+
+% 附录
+\renewenvironment{appendix}{
+\clearpage
+\vspace*{-2em}
+\phantomsection % 使得hyperref目录能够跳转到正确的位置
+\addcontentsline{toc}{section}{附录} % 添加到目录中
+\begin{center}
+ \songti \Large \bfseries 附录\end{center}\vspace{1.1cm}
+\setlength{\parindent}{2em}
+\setlength{\parskip}{0.5em}
+\setlength{\baselineskip}{22pt} % 22磅行距，首行缩进1字符，段前、段后均为0行间距
+\songti
+\par
+}{
+}
+
+% 图名称
+\renewcommand{\figurename}{图}
+\renewcommand{\tablename}{表}

@@ -1,0 +1,46 @@
+\begin{thebibliography}{1}
+\providecommand{\bibauthor}[1]{#1}
+\providecommand{\bibeditor}[1]{#1}
+\providecommand{\bibtranslator}[1]{#1}
+\providecommand{\bibtitle}[1]{#1}
+\providecommand{\bibbooktitle}[1]{#1}
+\providecommand{\bibjournal}[1]{#1}
+\providecommand{\bibmark}[1]{#1}
+\providecommand{\bibcountry}[1]{#1}
+\providecommand{\bibpatentid}[1]{#1}
+\providecommand{\bibedition}[1]{#1}
+\providecommand{\biborganization}[1]{#1}
+\providecommand{\bibaddress}[1]{#1}
+\providecommand{\bibpublisher}[1]{#1}
+\providecommand{\bibinstitution}[1]{#1}
+\providecommand{\bibschool}[1]{#1}
+\providecommand{\bibvolume}[1]{#1}
+\providecommand{\bibnumber}[1]{#1}
+\providecommand{\bibversion}[1]{#1}
+\providecommand{\bibpages}[1]{#1}
+\providecommand{\bibmodifydate}[1]{#1}
+\providecommand{\bibcitedate}[1]{#1}
+\providecommand{\bibyear}[1]{#1}
+\providecommand{\bibdate}[1]{#1}
+\providecommand{\biburl}[1]{\newline\url{#1}}
+
+\bibitem{avriel2003nonlinear}
+\bibauthor{AVRIEL M}\@. \bibbooktitle{Nonlinear programming: analysis and
+  methods}\bibmark{[M]}\@. \bibaddress{[S.l.]}\thinspace{}\textnormal{:
+  }\bibpublisher{Courier Corporation}\@, \bibyear{2003}\@.
+
+\bibitem{hinton2012practical}
+\bibauthor{HINTON G~E}\@. \bibtitle{A practical guide to training restricted
+  Boltzmann machines}\bibmark{[G]} //\thinspace{}\bibbooktitle{Neural networks:
+  Tricks of the trade}\@. \bibaddress{[S.l.]}\thinspace{}\textnormal{:
+  }\bibpublisher{Springer}\@, \bibyear{2012}\thinspace{}\textnormal{:
+  }\bibpages{599\thinspace{}\textnormal{--}\thinspace{}619}\@.
+
+\bibitem{bourlard1988auto}
+\bibauthor{BOURLARD H\@, KAMP Y}\@. \bibtitle{Auto-association by multilayer
+  perceptrons and singular value decomposition}\bibmark{[J]}\@.
+  \bibjournal{Biological cybernetics}\@, \bibyear{1988}\@,
+  \bibvolume{59}\bibnumber{(4-5)}\thinspace{}\textnormal{:
+  }\bibpages{291\thinspace{}\textnormal{--}\thinspace{}294}\@.
+
+\end{thebibliography}

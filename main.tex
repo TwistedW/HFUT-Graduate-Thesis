@@ -1,0 +1,217 @@
+\documentclass[a4paper, twoside]{ltxdoc}
+\usepackage[UTF8, heading=true, scheme=plain, linespread=1.2, zihao=-4, fontset=fandol]{ctex}
+
+% counterwith重定义问题
+\let\counterwithout\relax
+\let\counterwithin\relax
+
+\usepackage{titlesec, titletoc}
+\usepackage{amsfonts,amssymb} %对标题和目录操作的包
+\usepackage{amsmath}% math包的扩展
+\numberwithin{equation}{section} %公式自动标注
+\usepackage{diagbox}% math包的扩展
+\usepackage{CJK}
+\usepackage{CJKulem}
+\usepackage[hidelinks]{hyperref} %上面三个包对涉及中文过程的依赖包
+\usepackage{geometry, parskip, seqsplit, fancyhdr, etoolbox, tocloft} %空间调整包
+\usepackage{flafter, chngcntr, caption, multirow, graphicx} %处理图表的包
+\usepackage{minted} % 代码高亮模块，若不需要就删去，这个视实际需要
+\usepackage[bottom]{footmisc} % 脚注放到页面最底部
+\usepackage{ctex} %引入CTEX宏包
+\usepackage[justification=centering]{caption}
+\usepackage[justification=centering, list=off]{bicaption} %设置中英文标注，默认是居中，在生成图表列表下只显示第一caption的列表
+\captionsetup[figure][bi-second]{name=Fig} %设置图的英文编号前缀
+\captionsetup[table][bi-second]{name=Tab} %设置表的英文编号前缀
+
+\counterwithin{figure}{section} % 图的编号按section编排
+\counterwithin{table}{section} % 表的编号按section编排
+\DeclareCaptionFormat{smallformat}{\songti \small #1#2#3} % 宋体，五号
+
+\input{macro.tex}
+
+\captionsetup{
+	labelsep=quad, % caption去掉分隔符:
+	textformat=simple,
+	format=smallformat,
+}
+
+\titleformat{\section}{\centering \heiti \sanhao \bfseries}{第\chinese{section}章}{0.5em}{}
+
+% 根据毕业要求设置字体
+\ctexset{
+	space=auto,
+	section = {
+		format = \centering \heiti \sanhao \bfseries,
+		aftername = \hspace{1em}, 
+		afterindent = true,
+	},
+	subsection = {
+		format = \heiti \xiaosihao \bfseries,
+		aftername = \hspace{0.4em},
+		afterindent = true,
+	},
+	subsubsection = {
+		format = \songti \xiaosihao \bfseries,
+		aftername = \hspace{0.4em},
+		afterindent = true,
+	},
+}
+
+%一级标题段前段后单倍行距，二级、三级等标题为0.5倍行距，只做到subsub标题，如果需要依次加入即可
+\titlespacing{\section} {0pt}{12pt}{12pt}
+\titlespacing{\subsection} {0pt}{6pt}{6pt}
+\titlespacing{\subsubsection} {0pt}{6pt}{6pt}
+
+\geometry{left=3cm, right=3cm, top=2.54cm, bottom=2.54cm} %按照格式要求左右3cm，上下2.54cm
+
+\titlecontents{section}[0pt]{\addvspace{1.5pt}\filright}%
+               {\contentspush{\thecontentslabel \quad}}%
+               {}{\titlerule*[8pt]{.}\contentspage}
+             
+\CTEXsetup[name={第,章},number={\chinese{section}}]{section} %上面几句用于操作目录
+
+\setmainfont{Times New Roman} % 英文字体
+
+\begin{document}
+\include{tex/cover}
+\include{tex/chinese_title}
+\include{tex/english_title}
+\include{tex/statement}
+\pagenumbering{Roman} %对正文前利用罗马5号数字打页码
+
+\begin{abstract}
+这部分是摘要
+\end{abstract}
+
+\begin{abstractEn}
+This is English abstract.
+\end{abstractEn}
+
+% 目录
+{
+%\tocloftpagestyle{empty}
+\setlength{\cftfignumwidth}{3.5em}
+\setlength{\cfttabnumwidth}{3.5em}
+\setlength{\parskip}{0em} % 段落间无空行
+\setlength{\lineskip}{0em} % 行距为0，值得是每行之间固定行间距
+\setlength{\baselineskip}{20pt} %行间距20磅
+\clearpage
+
+\tableofcontents
+%\addtocontents{toc}{\protect\thispagestyle{empty}}
+%\pagenumbering{gobble}
+
+\clearpage
+\listoffigures %插图清单
+
+\clearpage
+\listoftables %表格清单
+
+%\pagenumbering{arabic}
+}
+% 设置页眉
+\newgeometry{left=2.8cm, right=2.8cm, top=3cm, bottom=3cm}
+\fancyhead{}                            
+\fancyhead[CE]{{\songti \wuhao} 合肥工业大学学术硕士研究生学位论文 \vspace{0.3cm}} %根据以往的形式奇数页的页眉为学位论文，偶数页为章节名
+\fancyhead[CO]{{\songti \wuhao} 第\chinese{section}章 \leftmark \vspace{0.3cm}}
+\cfoot{\thepage} 
+\pagestyle{fancy} 
+
+% 正文
+{
+\setcounter{page}{1}
+\pagenumbering{arabic}
+% 重写section指令以便设置section段前1行间距，分页
+\pretocmd{\section}{\clearpage \vspace*{-2.0em}}{}{}
+
+\setlength{\parindent}{2em} %首行缩紧2字符
+\setlength{\parskip}{0em} % 段落间无空行
+\setlength{\lineskip}{0em} % 行距为0，值得是每行之间固定行间距
+\setlength{\baselineskip}{20pt} %行间距20磅
+
+\section{这是第一章}
+\subsection{这是第一节}
+这部分写你的文章，section为一级标题，subsection为二级标题，subsubsection为三级标题，依次类推
+
+\begin{figure}[!htb]
+	\centering
+	%\vspace{-0.5cm}  %调整图片与上文的垂直距离，视情况而定，这部分我给注释掉，需要的自己加入
+	%\setlength{\abovecaptionskip}{0.2cm}   %调整图片标题与图距离，视情况而定，这部分我给注释掉，需要的自己加入
+	\includegraphics[scale=0.5]{images/test.png} %scale为图像尺寸，会latex的能看懂的吧
+	\bicaption{测试图}{test figure} %这是双标图示
+%\vspace{-0.5cm}  %调整图片与下文的垂直距离，视情况而定，这部分我给注释掉，需要的自己加入
+\end{figure}
+
+这是你的第一张图片~\cite{avriel2003nonlinear}
+
+%这是没有超行和换等号的公式
+\begin{equation} \label{equ:1.1}
+\mathcal{L}_D= = \mathbb{E}_{x \sim p_data(x)} [\log{(D(x))}]+ \mathbb{E}_{z \sim p_z (z)} [\log⁡{(1-D(G(z))})]  
+\end{equation}
+
+这是你的第一个公式
+
+%这是带换等号的公式
+\begin{equation}\label{equ:1.2}
+\begin{aligned}
+\begin{split}
+C(G) &= \max_D V(D,G) \\
+&= \max_D \int_x p_{data}(x) \log{(D(x))} + p_g(x) \log{(1-D(x))} dx \\
+&= \int_x p_{data}(x) \log{D_G^*(x)} + p_g(x) \log{(1-D_G^*(x))} dx \\
+&= \int_x p_{data}(x) \log{(\frac{p_{data}(x)}{p_{data}(x)+p_g(x)})} + p_g(x) \log{(1-\frac{p_{data}(x)}{p_{data}(x)+p_g(x)})} dx \\
+&= \int_x p_{data}(x) \log{(\frac{p_{data}(x)}{p_{data}(x)+p_g(x)})} + p_g(x) \log{(\frac{p_{g}(x)}{p_{data}(x)+p_g(x)})} dx \\
+&= \int_x p_{data}(x) \log{(\frac{p_{data}(x)}{\frac{p_{data}(x)+p_g(x)}{2}})} + p_g(x) \log{(\frac{p_{g}(x)}{\frac{p_{data}(x)+p_g(x)}{2}})} dx - \log{4} \\
+&= KL[p_{data}(x) \Vert \frac{p_{data}(x)+p_g(x)}{2}] + KL[p_g(x) \Vert \frac{p_{data}(x)+p_g(x)}{2}] - \log{4}
+\end{split}
+\end{aligned}
+\end{equation}
+
+这是你的第一个长公式
+
+\begin{table}[!htb]
+\centering
+%\vspace{-0.2cm}  %调整图片与上文的垂直距离，视情况而定，这部分我给注释掉，需要的自己加入
+\bicaption{生成对抗网络生成$28 \times 28 \times 1$的黑白图像的网络详细设计}{Detailed Network Design for Generating Adversarial Networks to Generate $28 \times 28 \times 1$ Black and White Images}
+%\vspace{-0.15cm}  %调整标注与表格的垂直距离，视情况而定，这部分我给注释掉，需要的自己加入
+\footnotesize
+\begin{tabular}{cccc}
+\hline
+\multicolumn{2}{c}{\textbf{Generator}} & \multicolumn{2}{c}{\textbf{Discriminator}} \\ \hline
+Layer & Shape & Layer & Shape \\
+input layer & (B, 100) & input layer & (B, 28, 28, 1) \\
+MLP-(100, 3136), BN, ReLU & (B, 3136) & CONV-(N64, K3, S2, P1), BN, LReLU & (B, 14, 14, 64)\\
+Reshape & (B, 7, 7, 64) & CONV-(N64, K3, S2, P1), BN, LReLU & (B, 7, 7, 64)\\
+DeCONV-(N64, K3, S2, P1), BN, ReLU & (B, 14, 14, 64) & CONV-(N128, K3, S2, P1), BN, LReLU & (B, 4, 4, 128)\\
+CONV-(N128, K3, S1, P1), BN, ReLU & (B, 14, 14, 128) & CONV-(N128, K3, S1, P1), BN, LReLU & (B, 4, 4, 128)\\
+DeCONV-(N64, K3, S2, P1), BN, ReLU & (B, 28, 28, 128) & Flatten & (B, 2048)\\
+CONV-(N64, K3, S1, P1), BN, ReLU & (B, 28, 28, 64) & MLP-(2048, 1), BN, Sigmoid & (B, 1)\\
+CONV-(N64, K3, S1, P1), BN, ReLU & (B, 28, 28, 64) \\
+CONV-(N1, K3, S1, P1), BN, ReLU & (B, 28, 28, 1) \\ \hline
+\end{tabular}
+%\vspace{-0.5cm}  %调整表注与下文的垂直距离，视情况而定，这部分我给注释掉，需要的自己加入
+\end{table}
+
+这是你的第一张表格
+
+
+
+% 参考文献
+{
+\clearpage % 分页
+\pagestyle{plain} % 这部分不需要页眉
+\phantomsection % 使得hyperref目录能够跳转到正确的位置
+\addcontentsline{toc}{section}{参考文献} % 添加到目录中
+\setlength{\baselineskip}{18pt}
+\nocite{*} % 添加所有文献
+%\bibliographystyle{gbt7714-2005} % 样式
+\bibliographystyle{bib/gbt7714-2005} % 样式
+\bibliography{bib/ref.bib}    % 文献数据库，到bib/ref.bib文件中添加，用过Latex都会用的吧
+}
+
+% 致谢
+\pagestyle{plain} % 这部分不需要页眉
+\begin{acknowledge}
+这部分是致谢
+\end{acknowledge}
+
+\end{document}
