@@ -64,7 +64,7 @@
 
 \geometry{left=3cm, right=3cm, top=2.54cm, bottom=2.54cm} %按照格式要求左右3cm，上下2.54cm
 
-\titlecontents{section}[0pt]{\addvspace{1.5pt}\filright}%
+\titlecontents{section}[0pt]{\addvspace{1.5pt}\filright\bf}%
                {\contentspush{\thecontentslabel \quad}}%
                {}{\titlerule*[8pt]{.}\contentspage}
              
@@ -78,6 +78,13 @@
 \include{tex/english_title}
 \include{tex/statement}
 \pagenumbering{Roman} %对正文前利用罗马5号数字打页码
+
+% 致谢
+\pagestyle{plain} % 这部分不需要页眉
+\begin{acknowledge}
+这部分是致谢
+\end{acknowledge}
+\clearpage
 
 \begin{abstract}
 这部分是摘要
@@ -193,7 +200,44 @@ CONV-(N1, K3, S1, P1), BN, ReLU & (B, 28, 28, 1) \\ \hline
 
 这是你的第一张表格
 
+\begin{minted}[
+	frame=lines,
+	framesep=2mm,
+	baselinestretch=1.2,
+	fontsize=\footnotesize,
+	linenos
+]{python}
 
+def adaptive_instance_layer_norm(x, gamma, beta, smoothing=True, scope='instance_layer_norm'):
+    with tf.variable_scope(scope):
+        ch = x.shape[-1]
+        eps = 1e-5
+        # 计算Instance mean，sigma and ins
+        ins_mean, ins_sigma = tf.nn.moments(x, axes=[1, 2], keep_dims=True)
+        x_ins = (x - ins_mean) / (tf.sqrt(ins_sigma + eps))
+        
+        # 计算Layer mean，sigma and ln
+        ln_mean, ln_sigma = tf.nn.moments(x, axes=[1, 2, 3], keep_dims=True)
+        x_ln = (x - ln_mean) / (tf.sqrt(ln_sigma + eps))
+        
+        # 给定rho的范围，smoothing控制rho的弹性范围
+        if smoothing:
+            rho = tf.get_variable("rho", [ch], initializer=tf.constant_initializer(0.9),
+                                  constraint=lambda x: tf.clip_by_value(x, 
+                                  clip_value_min=0.0, clip_value_max=0.9))
+        else:
+            rho = tf.get_variable("rho", [ch], initializer=tf.constant_initializer(1.0),
+                                  constraint=lambda x: tf.clip_by_value(x,
+                                  clip_value_min=0.0, clip_value_max=1.0))
+
+        # rho = tf.clip_by_value(rho - tf.constant(0.1), 0.0, 1.0)
+
+        x_hat = rho * x_ins + (1 - rho) * x_ln
+
+        x_hat = x_hat * gamma + beta
+
+        return x_hat
+\end{minted}
 
 % 参考文献
 {
@@ -207,11 +251,5 @@ CONV-(N1, K3, S1, P1), BN, ReLU & (B, 28, 28, 1) \\ \hline
 \bibliographystyle{bib/gbt7714-2005} % 样式
 \bibliography{bib/ref.bib}    % 文献数据库，到bib/ref.bib文件中添加，用过Latex都会用的吧
 }
-
-% 致谢
-\pagestyle{plain} % 这部分不需要页眉
-\begin{acknowledge}
-这部分是致谢
-\end{acknowledge}
 
 \end{document}
