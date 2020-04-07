@@ -146,6 +146,22 @@
 	\hfill \finishedYear\enspace 年\finishedMonth\enspace 月\finishedDay\enspace 日
 }
 
+% 攻读硕士学位期间的学术活动及成果情况
+\newenvironment{achievement}{
+\clearpage
+\vspace*{-2em}
+\phantomsection % 使得hyperref目录能够跳转到正确的位置
+\addcontentsline{toc}{section}{攻读硕士学位期间的学术活动及成果情况} % 添加到目录中
+\begin{center}
+\songti \Large \bfseries 攻读硕士学位期间的学术活动及成果情况\end{center}\vspace{1.1cm}
+\setlength{\parindent}{0em}
+\setlength{\parskip}{0em}
+\setlength{\lineskip}{0em} 
+\setlength{\baselineskip}{20pt} % （宋体，小四；固定行距22磅，段前、段后均为0行间距。段落首行缩进2字符。）
+\heiti
+\par
+}
+
 % 附录
 \renewenvironment{appendix}{
 \clearpage
