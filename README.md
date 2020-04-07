@@ -1,5 +1,5 @@
 ## 合肥工业大学研究生毕业设计（论文）模板
-首先声明下，本项目建立在[Netcan](https://github.com/netcan/HFUT_Thesis)开发的合肥工业大学本科毕业设计模板基础上，将之进行了扩展到合肥工业大学研究生毕业设计上，在使用之前你需要安装可以编译tex的软件，Latex、visiual studio或者Anything你想用的，Linux或者Mac用户可以make做编译。
+首先声明下，本项目建立在[Netcan](https://github.com/netcan/HFUT_Thesis)开发的合肥工业大学本科毕业设计模板基础上，将之进行了扩展到合肥工业大学研究生毕业设计上，在使用之前你需要安装可以编译tex的软件，Windows用户可以安装Texlive 、Miktex、visiual studio，Mac用户推荐Texshop，Ctex套装不建议使用😂
 
 # 使用方法
 
@@ -34,8 +34,19 @@
 
 然后把自己的论文在main.tex文件下，main.tex文件已经做了很详细的注释。
 
+可以自行编译，Linux或者Mac用户可以make做编译，Windows用户可以双击build.bat进行编译生成Pdf。
+
+# 已知问题反馈
+
+- `LaTeX Error: Unknown option `heading=true’ for package `ctex’`报错，由于当前所使用的 LaTeX 编译系统版本过旧或其宏包库没有更新，请或是更新 LaTeX 宏包库或是安装最新 LaTeX 编译器。如果你用的编译器是Ctex套装可能会引起这个问题，CTEX 套装已停止维护，建议安装下Texlive、Miktex或是Texshop，heading=true是ctex包下可以将章节标题设置为中文风格，这个在兼容性上不好解决，建议更换编译器。
+
+# 更新说明
+
+- `2020-04-06`  致谢部分提前，代码高亮
+- `2020-04-07`  添加攻读硕士学位期间的学术活动及成果情况页面
+
 # 注意事项
 
-编码方式默认为UTF-8。
+- 编码方式默认为UTF-8。
 
-这个模板是初版，大家觉得哪里不合适，可以进行contribute，也可以私信我提出意见，后期有更新的话，注意关注下，感谢支持，希望大家都能顺利毕业！
+- 这个模板是初版，大家觉得哪里不合适，可以进行contribute，也可以私信我提出意见，后期有更新的话，注意关注下，感谢支持，希望大家都能顺利毕业！
