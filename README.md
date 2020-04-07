@@ -39,7 +39,7 @@
 # 已知问题反馈
 
 - `LaTeX Error: Unknown option `heading=true’ for package `ctex’`报错，由于当前所使用的 LaTeX 编译系统版本过旧或其宏包库没有更新，请或是更新 LaTeX 宏包库或是安装最新 LaTeX 编译器。如果你用的编译器是Ctex套装可能会引起这个问题，CTEX 套装已停止维护，建议安装下Texlive、Miktex或是Texshop，heading=true是ctex包下可以将章节标题设置为中文风格，这个在兼容性上不好解决，建议更换编译器。
-- `Package minted error: you must have pygmentize' installed to use this packag`，这个问题可能出现在你的Python没有安装pygmentize，如果安装了pygmentize，就是你环境没有配置正确，在LaTeXTools configuration file中可以将`"texpath":"$PATH:/usr/texbin:/usr/local/bin:/opt/local/bin"`路径中加入你的pygmentize路径，即`"texpath" : "$PATH:/usr/texbin:/usr/local/bin:/opt/local/bin:/Library/Frameworks/Python.framework/Versions/3.4/bin" `这里的地址视你的电脑下的地址，此处仅仅是给出示例。温馨提示：如果你的论文中不需要插入代码，此时就可以忽略这个错误，将与minted相关的包和代码全部删除即可。
+- `Package minted error: you must have pygmentize' installed to use this packag`，这个问题可能出现在你的Python没有安装pygmentize，如果安装了pygmentize，就是你环境没有配置正确，在LaTeXTools configuration file中可以将`"texpath":"$PATH:/usr/texbin:/usr/local/bin:/opt/local/bin"`路径中加入你的pygmentize路径，即`"texpath":"$PATH:/usr/texbin:/usr/local/bin:/opt/local/bin:/Library/Frameworks/Python.framework/Versions/3.4/bin" `这里的地址视你的电脑下的地址，此处仅仅是给出示例。温馨提示：如果你的论文中不需要插入代码，此时就可以忽略这个错误，将与minted相关的包和代码全部删除即可。
 
 # 更新说明
 
