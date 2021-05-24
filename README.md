@@ -1,3 +1,5 @@
+# 合肥工业大学学位论文LaTeX模板 迁移至 [HFUTTUG/HFUT_Thesis](https://github.com/HFUTTUG/HFUT_Thesis)
+
 ## 合肥工业大学研究生毕业设计（论文）模板
 首先声明下，本项目建立在[Netcan](https://github.com/netcan/HFUT_Thesis)开发的合肥工业大学本科毕业设计模板基础上，将之进行了扩展到合肥工业大学研究生毕业设计上，在使用之前你需要安装可以编译tex的软件，Windows用户可以安装Texlive 、Miktex、visiual studio，Mac用户推荐Texshop，Ctex套装不建议使用😂
 
